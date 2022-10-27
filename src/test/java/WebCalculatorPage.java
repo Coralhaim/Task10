@@ -14,24 +14,23 @@ public class WebCalculatorPage extends BasePage {
     }
 
     public  void dimensions(){
-       WebElement seven=driver.findElement(By.id("seven"));
+        WebElement seven=DriverSingleton.getDriverInstance().findElement(By.id("seven"));
         System.out.println("element size"+seven.getSize());
 
     }
 
     public void displayed(){
-        WebElement six=driver.findElement(By.id("six"));
+        WebElement six=DriverSingleton.getDriverInstance().findElement(By.id("six"));
         System.out.println("six btn diplayed:"+six.isDisplayed());
     }
 
     public void  calculate(int num){
-
-        clickElement(By.id("seven"));
+        clickElement(By.id("five"));
         clickElement(By.id("add"));
         clickElement(By.id("one"));
         clickElement(By.id("equal"));
-//        WebElement result=driver.findElement(By.id("screen"));
-//        Assert.assertEquals(result.getText(),String.valueOf(num));
+        WebElement result=DriverSingleton.getDriverInstance().findElement(By.id("screen"));
+        Assert.assertEquals(String.valueOf(result.getText()),String.valueOf(num));
 
 
     }

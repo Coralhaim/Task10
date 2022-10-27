@@ -6,13 +6,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class POMTest  {
+
    public  static WebDriver driver;
 
    @BeforeClass
    public static void runOnceBeforeClass() {
        System.setProperty("webdriver.chrome.driver", Constants.CHROMEDRIVER_PATH);
-       driver = new ChromeDriver();
-       driver.get("https://dgotlieb.github.io/WebCalculator/");
+       DriverSingleton.getDriverInstance().get("https://dgotlieb.github.io/WebCalculator/");
    }
    @Test
     public void test04(){
@@ -22,6 +22,9 @@ public class POMTest  {
        newpage.calculate(6);
 
    }
-
+    @AfterClass
+    public static void tearDown() {
+      DriverSingleton.getDriverInstance().quit();
+    }
 
 }
